@@ -1,4 +1,4 @@
-﻿// La génération de code T4 est activée pour le modèle 'E:\02_SIO_SLAM\AP\AP1\Mission 3\code mission3\gsbRapports\gsbRapports\mdGsbrapports.edmx'. 
+﻿// La génération de code T4 est activée pour le modèle 'E:\02_SIO_SLAM\AP\AP1\Mission 3\code mission3\gsbRapports\gsbRapports\gsbRapportMdl.edmx'. 
 // Pour activer la génération de code héritée, définissez la valeur de la propriété
 // du concepteur 'Stratégie de génération de code' sur 'ObjectContext hérité'. Cette propriété est disponible dans la fenêtre Propriétés lorsque le modèle
 //  est ouvert dans le concepteur.

@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="gsbrapports2021Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="gsbrapport2021Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="famille">
           <Key>
             <PropertyRef Name="id" />
@@ -54,16 +54,6 @@
           <Property Name="bilan" Type="varchar" MaxLength="100" />
           <Property Name="idVisiteur" Type="char" MaxLength="4" Nullable="false" />
           <Property Name="idMedecin" Type="int" Nullable="false" />
-        </EntityType>
-        <EntityType Name="sysdiagrams">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="principal_id" Type="int" Nullable="false" />
-          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="version" Type="int" />
-          <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
         <EntityType Name="visiteur">
           <Key>
@@ -139,13 +129,12 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="gsbrapports2021ModelStoreContainer">
+        <EntityContainer Name="gsbrapport2021ModelStoreContainer">
           <EntitySet Name="famille" EntityType="Self.famille" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="medecin" EntityType="Self.medecin" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="medicament" EntityType="Self.medicament" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="offrir" EntityType="Self.offrir" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="rapport" EntityType="Self.rapport" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="visiteur" EntityType="Self.visiteur" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_offrir_rapport" Association="Self.FK_offrir_rapport">
             <End Role="rapport" EntitySet="rapport" />
@@ -172,7 +161,7 @@
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="gsbrapports2021Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="gsbrapport2021Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="famille">
           <Key>
             <PropertyRef Name="id" />
@@ -231,16 +220,6 @@
           <NavigationProperty Name="medecin" Relationship="Self.rapport_fk2" FromRole="rapport" ToRole="medecin" />
           <NavigationProperty Name="offrirs" Relationship="Self.FK_offrir_rapport" FromRole="rapport" ToRole="offrir" />
           <NavigationProperty Name="visiteur" Relationship="Self.FK_rapport_visiteur" FromRole="rapport" ToRole="visiteur" />
-        </EntityType>
-        <EntityType Name="sysdiagram">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="principal_id" Type="Int32" Nullable="false" />
-          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="version" Type="Int32" />
-          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
         <EntityType Name="visiteur">
           <Key>
@@ -323,7 +302,6 @@
           <EntitySet Name="medicaments" EntityType="Self.medicament" />
           <EntitySet Name="offrirs" EntityType="Self.offrir" />
           <EntitySet Name="rapports" EntityType="Self.rapport" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
           <EntitySet Name="visiteurs" EntityType="Self.visiteur" />
           <AssociationSet Name="medicament_fk" Association="Self.medicament_fk">
             <End Role="famille" EntitySet="familles" />
@@ -351,9 +329,9 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="gsbrapports2021ModelStoreContainer" CdmEntityContainer="gsbrapports2021Entities">
+        <EntityContainerMapping StorageEntityContainer="gsbrapport2021ModelStoreContainer" CdmEntityContainer="gsbrapports2021Entities">
           <EntitySetMapping Name="familles">
-            <EntityTypeMapping TypeName="gsbrapports2021Model.famille">
+            <EntityTypeMapping TypeName="gsbrapport2021Model.famille">
               <MappingFragment StoreEntitySet="famille">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="libelle" ColumnName="libelle" />
@@ -361,7 +339,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="medecins">
-            <EntityTypeMapping TypeName="gsbrapports2021Model.medecin">
+            <EntityTypeMapping TypeName="gsbrapport2021Model.medecin">
               <MappingFragment StoreEntitySet="medecin">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="nom" ColumnName="nom" />
@@ -374,7 +352,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="medicaments">
-            <EntityTypeMapping TypeName="gsbrapports2021Model.medicament">
+            <EntityTypeMapping TypeName="gsbrapport2021Model.medicament">
               <MappingFragment StoreEntitySet="medicament">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="nomCommercial" ColumnName="nomCommercial" />
@@ -386,7 +364,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="offrirs">
-            <EntityTypeMapping TypeName="gsbrapports2021Model.offrir">
+            <EntityTypeMapping TypeName="gsbrapport2021Model.offrir">
               <MappingFragment StoreEntitySet="offrir">
                 <ScalarProperty Name="idRapport" ColumnName="idRapport" />
                 <ScalarProperty Name="idMedicament" ColumnName="idMedicament" />
@@ -395,7 +373,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="rapports">
-            <EntityTypeMapping TypeName="gsbrapports2021Model.rapport">
+            <EntityTypeMapping TypeName="gsbrapport2021Model.rapport">
               <MappingFragment StoreEntitySet="rapport">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="date" ColumnName="date" />
@@ -406,19 +384,8 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="gsbrapports2021Model.sysdiagram">
-              <MappingFragment StoreEntitySet="sysdiagrams">
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
-                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-                <ScalarProperty Name="version" ColumnName="version" />
-                <ScalarProperty Name="definition" ColumnName="definition" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="visiteurs">
-            <EntityTypeMapping TypeName="gsbrapports2021Model.visiteur">
+            <EntityTypeMapping TypeName="gsbrapport2021Model.visiteur">
               <MappingFragment StoreEntitySet="visiteur">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="nom" ColumnName="nom" />
