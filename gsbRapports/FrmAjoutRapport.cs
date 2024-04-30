@@ -20,24 +20,28 @@ namespace gsbRapports
             this.bdgVisiteur.DataSource = mesDonneesEF.visiteurs.ToList();
             this.bdgMedecin.DataSource = mesDonneesEF.medecins.ToList();
             this.bdgFamille.DataSource = mesDonneesEF.familles.Include("medicaments").ToList();
-            this.bdgMedicament.DataSource = this.bdgFamille;
-            this.bdgMedicament.DataMember = "medicaments";
 
-            dtgMedicament.DataSource = bdgMedicament;
-            bdgFamille.CurrentChanged += CmbFamille_CurrentChanged;
+            cmbFamille.DataSource = bdgFamille;
+            cmbFamille.DisplayMember = "libelle";
 
+            dtgMedicament.DataSource = null;
+
+            cmbFamille.SelectedIndexChanged += CmbFamille_SelectedIndexChanged;
 
         }
 
-        private void CmbFamille_CurrentChanged(object sender, EventArgs e)
+        private void CmbFamille_SelectedIndexChanged(object sender, EventArgs e)
         {
-
-            this.bdgMedicament.DataSource = ((famille)cmbFamille.SelectedValue).medicaments.ToList();
+            if (cmbFamille.SelectedItem != null)
+            {
+                famille selectedFamille = (famille)cmbFamille.SelectedItem;
+                dtgMedicament.DataSource = selectedFamille.medicaments.ToList();
+            }
         }
 
         private int newNumRapport()
         {
-            int n;
+            int n = 0;
             int dernier = (from ra in this.mesDonneesEF.rapports
                            select ra.id).Max();
             n = dernier + 1;
@@ -62,23 +66,40 @@ namespace gsbRapports
             return r;
         }
 
-        private offrir newOffrir()
+        private offrir newOffrir(rapport r)
         {
-            rapport r = newRapport();
-            DataGridViewRow selectedMedicament = dtgMedicament.SelectedRows[0];
-            medicament medicament = (medicament)selectedMedicament.DataBoundItem;
-            offrir o = new offrir();
-            o.idRapport = r.id;
-            o.idMedicament = medicament.id;
-            o.quantite = 1;
-            
-            return o;
+            if (dtgMedicament.SelectedRows.Count > 0)
+            {
+                DataGridViewRow selectedRow = dtgMedicament.SelectedRows[0];
+
+                if (selectedRow.DataBoundItem is medicament)
+                {
+                    medicament medicament = (medicament)selectedRow.DataBoundItem;
+                    offrir o = new offrir();
+                    o.idRapport = r.id; 
+                    o.idMedicament = medicament.id;
+                    o.quantite = 1;
+
+                    return o;
+                }
+                else
+                {
+                    MessageBox.Show("La ligne sélectionnée ne correspond pas à un médicament.");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Aucune ligne sélectionnée dans le DataGridView des médicaments.");
+            }
+
+            return null;
         }
+
 
         private void btnEnregistrer_Click(object sender, EventArgs e)
         {
             this.mesDonneesEF.rapports.Add(newRapport());
-            this.mesDonneesEF.offrirs.Add(newOffrir());
+            this.mesDonneesEF.offrirs.Add(newOffrir(newRapport()));
             this.bdgVisiteur.EndEdit();
             this.bdgMedicament.EndEdit();   
             this.bdgFamille.EndEdit();

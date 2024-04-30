@@ -22,3 +22,7 @@ using System.Diagnostics.CodeAnalysis;
 [assembly: SuppressMessage("Style", "IDE1006:Styles d'affectation de noms", Justification = "<En attente>", Scope = "member", Target = "~M:gsbRapports.FrmRechercheRapport.btnRechercher_Click(System.Object,System.EventArgs)")]
 [assembly: SuppressMessage("Style", "IDE0044:Ajouter un modificateur readonly", Justification = "<En attente>", Scope = "member", Target = "~F:gsbRapports.FrmRechercheRapport.mesDonneesEF")]
 [assembly: SuppressMessage("Style", "IDE1006:Styles d'affectation de noms", Justification = "<En attente>", Scope = "member", Target = "~M:gsbRapports.Form1.quitterToolStripMenuItem_Click(System.Object,System.EventArgs)")]
+[assembly: SuppressMessage("Style", "IDE0020:Utiliser les critères spéciaux", Justification = "<En attente>", Scope = "member", Target = "~M:gsbRapports.FrmAjoutRapport.newOffrir~gsbRapports.offrir")]
+[assembly: SuppressMessage("Style", "IDE0017:Simplifier l'initialisation des objets", Justification = "<En attente>", Scope = "member", Target = "~M:gsbRapports.FrmAjoutRapport.newOffrir(gsbRapports.rapport)~gsbRapports.offrir")]
+[assembly: SuppressMessage("Style", "IDE0020:Utiliser les critères spéciaux", Justification = "<En attente>", Scope = "member", Target = "~M:gsbRapports.FrmAjoutRapport.newOffrir(gsbRapports.rapport)~gsbRapports.offrir")]
+[assembly: SuppressMessage("Style", "IDE1006:Styles d'affectation de noms", Justification = "<En attente>", Scope = "member", Target = "~M:gsbRapports.FrmAjoutRapport.newOffrir(gsbRapports.rapport)~gsbRapports.offrir")]

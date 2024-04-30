@@ -46,11 +46,11 @@
             this.cmbFamille = new System.Windows.Forms.ComboBox();
             this.bdgFamille = new System.Windows.Forms.BindingSource(this.components);
             this.dtgMedicament = new System.Windows.Forms.DataGridView();
+            this.bdgMedicament = new System.Windows.Forms.BindingSource(this.components);
+            this.lblMed = new System.Windows.Forms.Label();
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nomCommercialDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.idFamille = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.bdgMedicament = new System.Windows.Forms.BindingSource(this.components);
-            this.lblMed = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.bdgVisiteur)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdgMedecin)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdgFamille)).BeginInit();
@@ -228,6 +228,21 @@
             this.dtgMedicament.Size = new System.Drawing.Size(508, 231);
             this.dtgMedicament.TabIndex = 13;
             // 
+            // bdgMedicament
+            // 
+            this.bdgMedicament.DataSource = typeof(gsbRapports.medicament);
+            // 
+            // lblMed
+            // 
+            this.lblMed.AutoSize = true;
+            this.lblMed.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMed.Location = new System.Drawing.Point(861, 289);
+            this.lblMed.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblMed.Name = "lblMed";
+            this.lblMed.Size = new System.Drawing.Size(153, 30);
+            this.lblMed.TabIndex = 14;
+            this.lblMed.Text = "Médicament";
+            // 
             // idDataGridViewTextBoxColumn
             // 
             this.idDataGridViewTextBoxColumn.DataPropertyName = "id";
@@ -254,21 +269,6 @@
             this.idFamille.Name = "idFamille";
             this.idFamille.ReadOnly = true;
             this.idFamille.Width = 150;
-            // 
-            // bdgMedicament
-            // 
-            this.bdgMedicament.DataSource = typeof(gsbRapports.medicament);
-            // 
-            // lblMed
-            // 
-            this.lblMed.AutoSize = true;
-            this.lblMed.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMed.Location = new System.Drawing.Point(861, 289);
-            this.lblMed.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblMed.Name = "lblMed";
-            this.lblMed.Size = new System.Drawing.Size(153, 30);
-            this.lblMed.TabIndex = 14;
-            this.lblMed.Text = "Médicament";
             // 
             // FrmAjoutRapport
             // 
